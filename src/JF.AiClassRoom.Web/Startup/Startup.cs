@@ -28,6 +28,12 @@ namespace JF.AiClassRoom.Web.Startup
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddNewtonsoftJson();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "AiClassRoom", Version = "v1" });
+                options.DocInclusionPredicate((docName, description) => true);
+            });
+
             //Configure Abp and Dependency Injection
             return services.AddAbp<AiClassRoomWebModule>(options =>
             {
@@ -41,7 +47,11 @@ namespace JF.AiClassRoom.Web.Startup
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseAbp(); //Initializes ABP framework.
-
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "AiClassRoom API V1");
+            }); //URL: /swagger 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
