@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using JF.AiClassRoom.Common;
 
 namespace JF.AiClassRoom.Books
 {
@@ -18,12 +19,11 @@ namespace JF.AiClassRoom.Books
             _bookRepository = bookRepository;
         }
 
-        public async Task<ListResultDto<BookDto>> GetBookList(int pageIndex, int pageSize)
+        public async Task<CommResult<List<BookDto>>> GetBookList(int pageIndex, int pageSize)
         {
             var bookList = await _bookRepository.GetBookList();
-            return new ListResultDto<BookDto>(ObjectMapper.Map<List<BookDto>>(bookList));
+            return new CommResult<List<BookDto>> { Data = ObjectMapper.Map<List<BookDto>>(bookList) ,Msg = "获取数据成功",Code=ErrorCode.Success};
         }
-
         public async Task CreateBook(BookDto book)
         {
             await _bookRepository.CreateBook(ObjectMapper.Map<Book>(book));

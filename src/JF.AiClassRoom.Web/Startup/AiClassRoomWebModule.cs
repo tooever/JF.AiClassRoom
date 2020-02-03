@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
+using Abp.Web.Models;
 
 namespace JF.AiClassRoom.Web.Startup
 {
@@ -33,6 +34,11 @@ namespace JF.AiClassRoom.Web.Startup
 
             Configuration.Navigation.Providers.Add<AiClassRoomNavigationProvider>();
 
+            //去掉接口返回的WrapResult属性
+            var result = new DontWrapResultAttribute();
+            Configuration.Modules.AbpAspNetCore().DefaultWrapResultAttribute.WrapOnError = result.WrapOnError;
+            Configuration.Modules.AbpAspNetCore().DefaultWrapResultAttribute.WrapOnSuccess = result.WrapOnSuccess;
+   
             Configuration.Modules.AbpAspNetCore()
                 .CreateControllersForAppServices(
                     typeof(AiClassRoomApplicationModule).GetAssembly(),

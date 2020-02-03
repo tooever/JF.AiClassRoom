@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using JF.AiClassRoom.Common;
 
 namespace JF.AiClassRoom.Books
 {
@@ -17,7 +18,7 @@ namespace JF.AiClassRoom.Books
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        Task<ListResultDto<BookDto>> GetBookList(int pageIndex, int pageSize);
+        Task<CommResult<List<BookDto>>> GetBookList(int pageIndex, int pageSize);
         /// <summary>
         /// 添加书籍书籍
         /// </summary>

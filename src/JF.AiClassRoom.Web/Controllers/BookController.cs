@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
-using Abp.AspNetCore.Mvc.Controllers;
+﻿using Abp.AspNetCore.Mvc.Controllers;
 using JF.AiClassRoom.Books;
 using JF.AiClassRoom.Books.Dtos;
-using Microsoft.AspNetCore.Http;
+using JF.AiClassRoom.Common;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JF.AiClassRoom.Web.Controllers
 {
@@ -26,7 +23,7 @@ namespace JF.AiClassRoom.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ListResultDto<BookDto>> Get(int pageIndex, int pageSize)
+        public async Task<CommResult<List<BookDto>>> Get(int pageIndex, int pageSize)
         {
             return await _bookService.GetBookList(pageIndex, pageSize);
         }
