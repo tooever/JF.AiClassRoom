@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JF.AiClassRoom.Application</name>
+    </assembly>
+    <members>
+        <member name="T:JF.AiClassRoom.AiClassRoomAppServiceBase">
+            <summary>
+            Derive your application services from this class.
+            </summary>
+        </member>
+        <member name="P:JF.AiClassRoom.Books.Dtos.BookDto.BookName">
+            <summary>
+            书名
+            </summary>
+        </member>
+    </members>
+</doc>
