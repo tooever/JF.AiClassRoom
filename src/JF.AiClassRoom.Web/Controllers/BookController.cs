@@ -26,9 +26,9 @@ namespace JF.AiClassRoom.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ListResultDto<BookDto>> Get()
+        public async Task<ListResultDto<BookDto>> Get(int pageIndex, int pageSize)
         {
-            return await _bookService.GetBookList();
+            return await _bookService.GetBookList(pageIndex, pageSize);
         }
     }
 }

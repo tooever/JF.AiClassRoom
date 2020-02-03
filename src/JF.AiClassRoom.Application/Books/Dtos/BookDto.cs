@@ -11,6 +11,7 @@ namespace JF.AiClassRoom.Books.Dtos
         public BookMapperProfile()
         {
             CreateMap<Book, BookDto>().ForMember(dto => dto.BookName, opt => opt.MapFrom(info => info.Name));
+            CreateMap<BookDto, Book>().ForMember(dto => dto.Name, opt => opt.MapFrom(info => info.BookName));
         }
     }
 
@@ -21,5 +22,6 @@ namespace JF.AiClassRoom.Books.Dtos
         /// 书名
         /// </summary>
         public string BookName { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -11,10 +11,24 @@ namespace JF.AiClassRoom.Books
 {
     public interface IBookAppService : IApplicationService
     {
-        [HttpGet]
-        Task<ListResultDto<BookDto>> GetBookList();
-
-        [HttpPost]
+        /// <summary>
+        /// 获取书籍数据
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        Task<ListResultDto<BookDto>> GetBookList(int pageIndex, int pageSize);
+        /// <summary>
+        /// 添加书籍书籍
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
         Task CreateBook(BookDto book);
+        /// <summary>
+        /// 删除书籍书籍
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task DeleteBook(int id);
     }
 }

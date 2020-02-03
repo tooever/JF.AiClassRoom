@@ -27,6 +27,10 @@ namespace JF.AiClassRoom.EntityFrameworkCore.Books
         {
             return _bookDapperRepository.InsertAsync(book);
         }
+        public Task DeleteBook(Book book)
+        {
+            return _bookDapperRepository.DeleteAsync(book);
+        }
         public int Count()
         {
             throw new NotImplementedException();

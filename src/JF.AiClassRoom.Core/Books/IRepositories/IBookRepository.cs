@@ -10,5 +10,6 @@ namespace JF.AiClassRoom.Books.IRepositories
     {
         public Task<IEnumerable<Book>> GetBookList();
         public Task CreateBook(Book book);
+        public Task DeleteBook(Book book);
     }
 }
