@@ -18,10 +18,27 @@ namespace JF.AiClassRoom.EntityFrameworkCore.Books
             _bookDapperRepository = bookDapperRepository;
         }
 
-        public Task<IEnumerable<Book>> GetBookList()
+        public Task<IEnumerable<Book>> GetBookList(int pageIndex, int pageSize)
         {
-            var bookList = _bookDapperRepository.QueryAsync<Book>("select * from book LIMIT 10");
+            string sql = "SELECT * FROM book LIMIT @start,@end";
+            var bookList = _bookDapperRepository.QueryAsync<Book>(sql,new { start =(pageIndex-1)*pageSize,end=pageSize});
             return bookList;
+        }
+        public Task<IEnumerable<Book>> GetBookByName(string bookName)
+        {
+            string sql = "SELECT * FROM book WHERE name=@bookname";
+            var book = _bookDapperRepository.QueryAsync<Book>(sql, new { bookName });
+            return book;
+        }
+        public Task<IEnumerable<Book>> GetBookById(int id)
+        {
+            string sql = "SELECT * FROM book WHERE id=@id";
+            var bookList = _bookDapperRepository.QueryAsync<Book>(sql, new { id});
+            return bookList;
+        }
+        public Task UpdateBook(Book book)
+        {
+           return _bookDapperRepository.UpdateAsync(book);
         }
         public Task CreateBook(Book book)
         {
@@ -30,6 +47,11 @@ namespace JF.AiClassRoom.EntityFrameworkCore.Books
         public Task DeleteBook(Book book)
         {
             return _bookDapperRepository.DeleteAsync(book);
+        }
+        public Task DeleteBook(string name, string writer)
+        {
+            string sql = "DELETE FROM book WHERE name=@name AND writer=@writer";
+            return _bookDapperRepository.ExecuteAsync(sql, new { name,writer });
         }
         public int Count()
         {

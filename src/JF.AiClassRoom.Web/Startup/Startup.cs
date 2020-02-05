@@ -4,6 +4,7 @@ using Abp.Castle.Logging.Log4Net;
 using Abp.EntityFrameworkCore;
 using JF.AiClassRoom.EntityFrameworkCore;
 using Castle.Facilities.Logging;
+using JF.AiClassRoom.Web.CustomFilter.ExceptionFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,8 @@ namespace JF.AiClassRoom.Web.Startup
             services.AddControllersWithViews(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                //添加全局异常过滤器
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter));
             }).AddNewtonsoftJson();
 
             services.AddSwaggerGen(options =>

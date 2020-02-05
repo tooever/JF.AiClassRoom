@@ -20,16 +20,47 @@ namespace JF.AiClassRoom.Books
         /// <returns></returns>
         Task<CommResult<List<BookDto>>> GetBookList(int pageIndex, int pageSize);
         /// <summary>
+        /// 通过数据名称获取书籍书籍
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <returns></returns>
+        Task<CommResult<List<BookDto>>> GetBookByName(string bookName);
+        /// <summary>
+        /// 通过数据名称获取书籍书籍
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<CommResult<List<BookDto>>> GetBookById(int id);
+        /// <summary>
         /// 添加书籍书籍
         /// </summary>
         /// <param name="book"></param>
         /// <returns></returns>
-        Task CreateBook(BookDto book);
+        Task<CommResult<bool>> CreateBook(BookDto book);
         /// <summary>
-        /// 删除书籍书籍
+        /// 更新书籍全部信息
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        Task<CommResult<bool>> UpdateBookAll(BookDto book);
+        /// <summary>
+        /// 更新书籍部分信息
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        Task<CommResult<bool>> UpdateBookParts(BookDto book);
+        /// <summary>
+        /// 通过id删除书籍信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task DeleteBook(int id);
+        Task<CommResult<bool>> DeleteBookById(int id);
+        /// <summary>
+        /// 通过多个条件删除书籍信息
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <param name="author"></param>
+        /// <returns></returns>
+        Task<CommResult<bool>> DeleteBook(string bookName,string author);
     }
 }

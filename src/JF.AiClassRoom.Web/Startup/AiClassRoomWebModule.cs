@@ -33,7 +33,6 @@ namespace JF.AiClassRoom.Web.Startup
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(AiClassRoomConsts.ConnectionStringName);
 
             Configuration.Navigation.Providers.Add<AiClassRoomNavigationProvider>();
-
             //去掉接口返回的WrapResult属性
             var result = new DontWrapResultAttribute();
             Configuration.Modules.AbpAspNetCore().DefaultWrapResultAttribute.WrapOnError = result.WrapOnError;

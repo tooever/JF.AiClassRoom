@@ -8,8 +8,12 @@ namespace JF.AiClassRoom.Books.IRepositories
 {
     public interface IBookRepository : IRepository<Book>
     {
-        public Task<IEnumerable<Book>> GetBookList();
-        public Task CreateBook(Book book);
-        public Task DeleteBook(Book book);
+        Task<IEnumerable<Book>> GetBookList(int pageIndex, int pageSize);
+        Task<IEnumerable<Book>> GetBookByName(string bookName);
+        Task<IEnumerable<Book>> GetBookById(int id);
+        Task UpdateBook(Book book);
+        Task CreateBook(Book book);
+        Task DeleteBook(Book book);
+        Task DeleteBook(string name,string writer);
     }
 }
