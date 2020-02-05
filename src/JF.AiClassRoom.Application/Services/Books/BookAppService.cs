@@ -1,13 +1,16 @@
-﻿using Abp.Application.Services.Dto;
-using JF.AiClassRoom.Books.Dtos;
-using JF.AiClassRoom.Books.IRepositories;
+﻿using JF.AiClassRoom.Books.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation.Results;
+using JF.AiClassRoom.Books.DbEntity.Books;
+using JF.AiClassRoom.Books.IRepositories.Books;
 using JF.AiClassRoom.Common;
+using JF.AiClassRoom.Dtos.Books;
+using JF.AiClassRoom.Validation;
 
-namespace JF.AiClassRoom.Books
+namespace JF.AiClassRoom.Services.Books
 {
     public class BookAppService : AiClassRoomAppServiceBase, IBookAppService
     {
@@ -49,13 +52,18 @@ namespace JF.AiClassRoom.Books
         }
         public async Task<CommResult<bool>> DeleteBookById(int id)
         {
-            await _bookRepository.DeleteBook(ObjectMapper.Map<Book>(new BookDto { Id = id }));
+            await _bookRepository.DeleteBookById(ObjectMapper.Map<Book>(new BookDto { Id = id }));
             return new CommResult<bool> { Data = true, Msg = "删除书籍信息成功", Code = ErrorCode.Success };
         }
 
         public async Task<CommResult<bool>> DeleteBook(string bookName, string author)
         {
-            await _bookRepository.DeleteBook(bookName, author);
+            BookDto customer = new BookDto { BookName = "1" };
+            BookDtoValidator validator = new BookDtoValidator();
+
+            ValidationResult result = validator.Validate(customer);
+
+            await _bookRepository.DeleteBookWithParam(ObjectMapper.Map<Book>(new BookDto { BookName = bookName,Author = author}));
             return new CommResult<bool> { Data = true, Msg = "删除书籍信息成功", Code = ErrorCode.Success };
         }
     }

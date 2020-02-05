@@ -1,10 +1,12 @@
 ﻿using Abp.AspNetCore.Mvc.Controllers;
 using JF.AiClassRoom.Books;
-using JF.AiClassRoom.Books.Dtos;
 using JF.AiClassRoom.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using JF.AiClassRoom.Dtos.Books;
+using JF.AiClassRoom.Services.Books;
+using FluentValidation.AspNetCore;
 
 namespace JF.AiClassRoom.Web.Controllers
 {
@@ -52,7 +54,7 @@ namespace JF.AiClassRoom.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<CommResult<bool>> Post(BookDto book)
+        public async Task<CommResult<bool>> Post([CustomizeValidator(RuleSet = "BookDto")]BookDto book)
         {
             //InsertAndGetIdAsync 添加数据并返回主键
             return await _bookService.CreateBook(book);

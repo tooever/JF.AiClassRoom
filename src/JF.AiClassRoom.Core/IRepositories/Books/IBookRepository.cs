@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using JF.AiClassRoom.Books.DbEntity.Books;
 
-namespace JF.AiClassRoom.Books.IRepositories
+namespace JF.AiClassRoom.Books.IRepositories.Books
 {
     public interface IBookRepository : IRepository<Book>
     {
@@ -13,7 +14,7 @@ namespace JF.AiClassRoom.Books.IRepositories
         Task<IEnumerable<Book>> GetBookById(int id);
         Task UpdateBook(Book book);
         Task CreateBook(Book book);
-        Task DeleteBook(Book book);
-        Task DeleteBook(string name,string writer);
+        Task DeleteBookById(Book book);
+        Task DeleteBookWithParam(Book book);
     }
 }

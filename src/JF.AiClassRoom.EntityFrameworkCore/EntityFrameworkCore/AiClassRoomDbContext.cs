@@ -1,5 +1,5 @@
 ﻿using Abp.EntityFrameworkCore;
-using JF.AiClassRoom.Books;
+using JF.AiClassRoom.Books.DbEntity.Books;
 using Microsoft.EntityFrameworkCore;
 
 namespace JF.AiClassRoom.EntityFrameworkCore

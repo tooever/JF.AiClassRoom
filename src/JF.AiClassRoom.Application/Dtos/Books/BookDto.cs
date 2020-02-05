@@ -1,10 +1,8 @@
 ﻿using Abp.AutoMapper;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using JF.AiClassRoom.Books.DbEntity.Books;
 
-namespace JF.AiClassRoom.Books.Dtos
+namespace JF.AiClassRoom.Dtos.Books
 {
     class BookMapperProfile : Profile
     {

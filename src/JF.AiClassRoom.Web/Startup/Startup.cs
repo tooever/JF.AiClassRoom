@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.EntityFrameworkCore;
 using JF.AiClassRoom.EntityFrameworkCore;
 using Castle.Facilities.Logging;
-using JF.AiClassRoom.Web.CustomFilter.ExceptionFilter;
+using JF.AiClassRoom.Application.CustomFilter.ExceptionFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

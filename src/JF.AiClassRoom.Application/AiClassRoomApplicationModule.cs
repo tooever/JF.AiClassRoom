@@ -1,13 +1,18 @@
 ﻿using Abp.AutoMapper;
+using Abp.FluentValidation;
+using Abp.FluentValidation.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using JF.AiClassRoom.Books.Dtos;
+using FluentValidation;
+using JF.AiClassRoom.Dtos.Books;
+using JF.AiClassRoom.Validation;
 
 namespace JF.AiClassRoom
 {
     [DependsOn(
         typeof(AiClassRoomCoreModule), 
-        typeof(AbpAutoMapperModule))]
+        typeof(AbpAutoMapperModule),
+        typeof(AbpFluentValidationModule))]
     public class AiClassRoomApplicationModule : AbpModule
     {
         public override void Initialize()
@@ -21,6 +26,6 @@ namespace JF.AiClassRoom
             {
                 config.AddMaps(typeof(BookMapperProfile));
             });
-        }
+    }
     }
 }

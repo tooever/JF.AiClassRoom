@@ -1,14 +1,14 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using JF.AiClassRoom.Books.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using JF.AiClassRoom.Common;
+using JF.AiClassRoom.Dtos.Books;
 
-namespace JF.AiClassRoom.Books
+namespace JF.AiClassRoom.Services.Books
 {
     public interface IBookAppService : IApplicationService
     {

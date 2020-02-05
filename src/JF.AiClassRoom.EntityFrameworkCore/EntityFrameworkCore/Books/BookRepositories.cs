@@ -1,12 +1,12 @@
 ﻿using Abp.Dapper.Repositories;
-using JF.AiClassRoom.Books;
-using JF.AiClassRoom.Books.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using JF.AiClassRoom.Books.DbEntity.Books;
+using JF.AiClassRoom.Books.IRepositories.Books;
 
 namespace JF.AiClassRoom.EntityFrameworkCore.Books
 {
@@ -44,14 +44,14 @@ namespace JF.AiClassRoom.EntityFrameworkCore.Books
         {
             return _bookDapperRepository.InsertAsync(book);
         }
-        public Task DeleteBook(Book book)
+        public Task DeleteBookById(Book book)
         {
             return _bookDapperRepository.DeleteAsync(book);
         }
-        public Task DeleteBook(string name, string writer)
+        public Task DeleteBookWithParam(Book book)
         {
             string sql = "DELETE FROM book WHERE name=@name AND writer=@writer";
-            return _bookDapperRepository.ExecuteAsync(sql, new { name,writer });
+            return _bookDapperRepository.ExecuteAsync(sql, book);
         }
         public int Count()
         {

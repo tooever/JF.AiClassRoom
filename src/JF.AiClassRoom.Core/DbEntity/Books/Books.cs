@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace JF.AiClassRoom.Books
+namespace JF.AiClassRoom.Books.DbEntity.Books
 {
     [Table("book")]
     public class Book : Entity
