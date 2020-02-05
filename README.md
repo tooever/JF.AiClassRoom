@@ -1,7 +1,7 @@
 ## 项目名称 
 Abp Demo
 ## 介绍
-一个基于Ab框架的WebApi Demo
+一个基于Abp框架的WebApi Demo
 
 MySql+Dapper+FluentValidation+AutoMapper
 ## 安装要求
