@@ -5,7 +5,7 @@ Abp Demo
 
 MySql+Dapper+FluentValidation+AutoMapper
 ## 安装要求
-需要 .net core 3.1、mysql 环境
+需要 vs2019、.net core 3.1、mysql 环境
 
 ## 安装步骤
 第一步 mysql创建一个数据库
